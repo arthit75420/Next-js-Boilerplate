@@ -44,6 +44,23 @@ export default function RootLayout(props: {
   return (
     <html lang={props.params.locale}>
       <body>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          crossOrigin="anonymous"
+          referrerPolicy="no-referrer"
+        />
+        <script
+          async
+          src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"
+        />
         <NextIntlClientProvider
           locale={props.params.locale}
           messages={messages}

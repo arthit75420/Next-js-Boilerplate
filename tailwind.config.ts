@@ -1,6 +1,7 @@
+import withMT from '@material-tailwind/react/utils/withMT';
 import type { Config } from 'tailwindcss';
 
-export default {
+export default withMT({
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontSize: {
@@ -39,8 +40,19 @@ export default {
           800: '#2c5282',
           900: '#2a4365',
         },
+        pantip: {
+          100: '#632f90',
+          200: '#632f90',
+          300: '#632f90',
+          400: '#662f8f66',
+          500: '#632f90',
+          600: '#632f90',
+          700: '#632f90',
+          800: '#632f90',
+          900: '#632f90',
+        },
       },
     },
   },
   plugins: [],
-} satisfies Config;
+}) satisfies Config;
