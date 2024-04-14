@@ -14,7 +14,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
       <div className="w-full text-gray-700 antialiased">
         <div className="mx-14">
           <Header />
-          <main className="mt-[70px]">{props.children}</main>
+          <main className="mt-[90px]">{props.children}</main>
 
           <footer className="border-t border-gray-300 py-8 text-center text-sm">
             © Copyright {new Date().getFullYear()} {AppConfig.name}.

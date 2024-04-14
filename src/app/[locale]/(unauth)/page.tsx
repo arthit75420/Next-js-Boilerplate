@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 import { Announce } from '@/components/Announce';
@@ -19,7 +18,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 export default function Index() {
   return (
     <>
-      <Image
+      {/* <Image
         src="/assets/images/songkran.png"
         alt="songkarn"
         width={0}
@@ -27,9 +26,9 @@ export default function Index() {
         sizes="100vw"
         style={{ width: '100%', height: 'auto' }}
         className="rounded-b-md shadow-xl shadow-pantip-500/40"
-      />
-      <Announce />
+      /> */}
       <Rooms />
+      <Announce />
     </>
   );
 }
