@@ -1,3 +1,5 @@
+import 'pino-pretty';
+
 import pino from 'pino';
 
 import { Env } from './Env.mjs';
