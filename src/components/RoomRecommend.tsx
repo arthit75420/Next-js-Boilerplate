@@ -4,14 +4,14 @@
 
 import { IconButton } from '@material-tailwind/react';
 import type { UnknownAction } from '@reduxjs/toolkit';
-import { type Dispatch, useEffect, useRef, useState } from 'react';
+import { type Dispatch, useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useSWR from 'swr';
 
 import { getRoomRecommend } from '@/services/homePageService';
 import type { RootState } from '@/stores';
 import { setRoomRecommend } from '@/stores/homePageSlice';
-import type { IRoomRecommend } from '@/types/response';
+import type { IRoomRecommend } from '@/types/model';
 
 import { listImageRoomRecommend } from './mockIcon';
 
@@ -49,27 +49,21 @@ const RoomRecommend = () => {
       revalidateOnFocus: false,
     },
   );
-  useEffect(() => {
-    const checkScrollPosition = () => {
-      if (!scrollDivRef.current) {
-        return;
-      }
-      const { scrollLeft, scrollWidth, clientWidth } = scrollDivRef.current;
-      setIsAtStart(scrollLeft === 0);
-      setIsAtEnd(scrollLeft >= scrollWidth - clientWidth);
-    };
 
-    scrollDivRef.current?.addEventListener('scroll', checkScrollPosition);
-    checkScrollPosition(); // Initial check on component mount
-
-    return () => {
-      scrollDivRef.current?.removeEventListener('scroll', checkScrollPosition);
-    };
+  const checkScrollPosition = useCallback(() => {
+    if (!scrollDivRef.current) {
+      return;
+    }
+    const { scrollLeft, scrollWidth, clientWidth } = scrollDivRef.current;
+    setIsAtStart(scrollLeft === 0);
+    setIsAtEnd(scrollLeft >= scrollWidth - clientWidth);
   }, []);
+
   // Function to scroll left
   const scrollLeft = () => {
     if (scrollDivRef.current) {
       scrollDivRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+      checkScrollPosition();
     }
   };
 
@@ -77,6 +71,7 @@ const RoomRecommend = () => {
   const scrollRight = () => {
     if (scrollDivRef.current) {
       scrollDivRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+      checkScrollPosition();
     }
   };
 
@@ -84,7 +79,7 @@ const RoomRecommend = () => {
   if (!roomRecommendList || isLoading) return <div>Loading...</div>;
   return (
     <div className="flex flex-row">
-      <div className="size-[90px] pr-2 pt-5 text-center">
+      <div className="size-[56px] pl-4 pt-5 text-center">
         <IconButton
           variant="outlined"
           className="rounded-full"
@@ -97,7 +92,10 @@ const RoomRecommend = () => {
           <span className="material-icons pl-2 pt-1">arrow_back_ios</span>
         </IconButton>
       </div>
-      <div className="hide-scrollbar flex overflow-x-scroll" ref={scrollDivRef}>
+      <div
+        className="hide-scrollbar mx-4 flex overflow-x-scroll"
+        ref={scrollDivRef}
+      >
         <div className="flex">
           {roomRecommendList?.map((ann) => (
             <div
@@ -115,7 +113,7 @@ const RoomRecommend = () => {
           ))}
         </div>
       </div>
-      <div className="size-[90px] pl-2 pt-5 text-center">
+      <div className="size-[56px] pr-2 pt-5 text-center">
         <IconButton
           variant="outlined"
           className="rounded-full"

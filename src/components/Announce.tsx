@@ -1,6 +1,13 @@
 'use client';
 
-import { Card, CardBody, Typography } from '@material-tailwind/react';
+import {
+  Chip,
+  Timeline,
+  TimelineConnector,
+  TimelineHeader,
+  TimelineItem,
+  Typography,
+} from '@material-tailwind/react';
 import useSWR from 'swr';
 
 interface IAnnounce {
@@ -33,44 +40,40 @@ const Announce = () => {
   if (!data) return <div>Loading...</div>;
 
   return (
-    <Card
-      className="mt-6 w-full"
-      placeholder={undefined}
-      onPointerEnterCapture={undefined}
-      onPointerLeaveCapture={undefined}
-    >
-      <CardBody
+    <div className="mx-14">
+      <Typography
+        variant="h4"
+        color="blue-gray"
+        className="mb-2 ml-2 mt-6"
         placeholder={undefined}
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
       >
-        <Typography
-          variant="h4"
-          color="blue-gray"
-          className="mb-2"
-          placeholder={undefined}
-          onPointerEnterCapture={undefined}
-          onPointerLeaveCapture={undefined}
-        >
-          Announce
-        </Typography>
+        Announce
+      </Typography>
+      <Timeline>
         {data?.data?.map((ann) => (
-          <div
-            key={ann.announce_id}
-            className="mt-1 flex w-full flex-row content-center border-t-2 pt-2"
-          >
-            <div
-              className="mb-2 w-full"
-              dangerouslySetInnerHTML={{ __html: ann.display_message }}
-            />
-            <div className="h-8 w-24 border-spacing-1 rounded-lg border border-s border-pantip-500 text-center">
-              <span className="text-sm font-bold">{ann.category_name}</span>
-            </div>
-          </div>
+          <TimelineItem className="h-28" key={ann.announce_id}>
+            <TimelineConnector className="!w-[78px]" />
+            <TimelineHeader className="relative rounded-xl border border-blue-gray-50 bg-white py-3 pl-4 pr-8 shadow-lg shadow-blue-gray-900/5">
+              <div className="flex items-center gap-1">
+                <Chip
+                  style={{ fontSize: 11, height: 28 }}
+                  size="sm"
+                  value={ann.category_name}
+                  color={ann.category_name === 'activity' ? 'indigo' : 'amber'}
+                />
+                <div
+                  className="ml-2 w-full"
+                  dangerouslySetInnerHTML={{ __html: ann.display_message }}
+                />
+              </div>
+            </TimelineHeader>
+          </TimelineItem>
         ))}
-      </CardBody>
-    </Card>
+      </Timeline>
+    </div>
   );
 };
 
-export { Announce };
+export default Announce;

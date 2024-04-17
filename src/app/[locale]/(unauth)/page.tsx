@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import { Announce } from '@/components/Announce';
+import Announce from '@/components/Announce';
+import Highlight from '@/components/Highlight';
 import RoomRecommend from '@/components/RoomRecommend';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -28,7 +29,11 @@ export default function Index() {
         className="rounded-b-md shadow-xl shadow-pantip-500/40"
       /> */}
       <RoomRecommend />
+      {/* <div className="my-2 border" /> */}
+      <hr className="my-3" />
       <Announce />
+      <Highlight />
+      <div className="mb-8" />
     </>
   );
 }
