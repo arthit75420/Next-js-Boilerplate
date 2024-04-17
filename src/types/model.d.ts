@@ -14,3 +14,11 @@ export interface IHighlight {
   image_url: string[];
   post_url: string;
 }
+
+export interface IAnnounce {
+  announce_id: number;
+  category_name: string;
+  type: string;
+  display_message: string | TrustedHTML;
+  created_time: string;
+}

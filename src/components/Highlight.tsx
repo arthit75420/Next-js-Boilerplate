@@ -124,15 +124,6 @@ const Highlight = () => {
                   onPointerEnterCapture={undefined}
                   onPointerLeaveCapture={undefined}
                 >
-                  {/* <Typography
-                    variant="h6"
-                    color="blue-gray"
-                    placeholder={undefined}
-                    onPointerEnterCapture={undefined}
-                    onPointerLeaveCapture={undefined}
-                  >
-                    {ann.name}
-                  </Typography> */}
                   <Typography
                     variant="small"
                     color="gray"
@@ -145,20 +136,6 @@ const Highlight = () => {
                   </Typography>
                 </CardBody>
               </Card>
-              // <div
-              //   key={ann.name}
-              //   className="flex size-[90px] flex-col items-center pt-2"
-              // >
-              //   <img
-              //     src={ann.image_url[0]}
-              //     alt={ann.name}
-              //     width="60"
-              //     className="rounded-md bg-pantip-500"
-              //   />
-              //   <span className="mb-2 pt-0.5 text-sm font-bold">
-              //     {ann.name}
-              //   </span>
-              // </div>
             ))}
           </div>
         </div>

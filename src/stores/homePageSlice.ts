@@ -1,16 +1,18 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { IHighlight, IRoomRecommend } from '@/types/model';
+import type { IAnnounce, IHighlight, IRoomRecommend } from '@/types/model';
 
 interface InitStateHomePage {
   roomRecommend: IRoomRecommend[];
   highlight: IHighlight[];
+  announce: IAnnounce[];
 }
 
 const initialState: InitStateHomePage = {
   roomRecommend: [],
   highlight: [],
+  announce: [],
 };
 
 const homePageStoreSlice = createSlice({
@@ -23,8 +25,12 @@ const homePageStoreSlice = createSlice({
     setHighlight: (state, action) => {
       state.highlight = action.payload;
     },
+    setAnnounce: (state, action) => {
+      state.announce = action.payload;
+    },
   },
 });
 
-export const { setRoomRecommend, setHighlight } = homePageStoreSlice.actions;
+export const { setRoomRecommend, setHighlight, setAnnounce } =
+  homePageStoreSlice.actions;
 export default homePageStoreSlice.reducer;

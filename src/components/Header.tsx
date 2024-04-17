@@ -1,8 +1,5 @@
 'use client';
 
-// import { useClerk } from '@clerk/nextjs';
-// import { useRouter } from 'next/navigation';
-// import { useTranslations } from 'next-intl';
 import {
   Button,
   Dialog,

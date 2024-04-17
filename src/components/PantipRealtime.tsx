@@ -30,7 +30,7 @@ const fetcher = (dispatch: Dispatch<UnknownAction>) => {
     });
 };
 
-const Announce = () => {
+const PantipRealtime = () => {
   const dispatch = useDispatch();
   const announceList = useSelector(
     (state: RootState) => state.homePage.announce,
@@ -78,4 +78,4 @@ const Announce = () => {
   );
 };
 
-export default Announce;
+export default PantipRealtime;
